@@ -31,7 +31,8 @@
           item.diet,
           item.where,
           item.when,
-          item.fact
+          item.fact,
+          item.species.toLowerCase()+'.png'
         );
         dinos.push(dino);
       });
@@ -42,7 +43,7 @@
 // Create Human Object
 
 const human = new Dinosaur (
-  'asdfa', 2342134, 1234123, 'herbavore', 'Spain', 'long time ago', 'facto'
+  'asdfa', 2342134, 1234123, 'herbavore', 'Spain', 'long time ago', 'facto','human.png'
 );
 
 /*
@@ -88,7 +89,7 @@ document.getElementById('btn').addEventListener('click', (event)=>{
        grid.innerHTML += `
              <div class="grid-item">
                  <h3>${dinos[i].species}</h3>
-                 <img src="./images/${dinos[i].species.toLowerCase()}.png" alt="a draw of a ${dinos[i].species}" />
+                 <img src="./images/${dinos[i].image}" alt="a draw of a ${dinos[i].species}" />
                  <p>${dinos[i].fact}</p>
                  
                </div>
