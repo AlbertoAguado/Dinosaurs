@@ -1,11 +1,9 @@
 
-
-    // Create Dino Constructor
-    //************************************************************************************ */
-    function dinosaur(species, weight, height, diet, where, when, fact, image) {
+// Create Dino Constructor
+    function Dinosaur(species, height, weight, diet, where, when, fact, image) {
       this.species = species;
-      this.weight = weight;
       this.height = height;
+      this.weight = weight;
       this.diet = diet;
       this.where = where;
       this.when = when;
@@ -19,16 +17,17 @@
       return data.Dinos;
     };
 
+// Create Dino Objects
     const dinos = [];
 
     window.onload = async () => {
       const dinoArray = await getDinoData();
 
       dinoArray.forEach(item => {
-        const dino = new dinosaur (
+        const dino = new Dinosaur (
           item.species,
-          item.weight,
           item.height,
+          item.weight,
           item.diet,
           item.where,
           item.when,
@@ -37,50 +36,33 @@
         dinos.push(dino);
       });
       console.log(dinos)
-
-
     };
 
 
-    // Create Dino Objects
+// Create Human Object
 
+const human = new Dinosaur (
+  'asdfa', 2342134, 1234123, 'herbavore', 'Spain', 'long time ago', 'facto'
+);
 
-    // Create Human Object
+/*
 
+const human = {
+  image:'images/human.png'
+};
+  // Use IIFE to get human data from form
+document.getElementById('btn').addEventListener('click', (event)=>{
+  (function getHumanData (e) {
+      human.name = document.getElementById('name').value,
+      human.feet = document.getElementById('feet').value,
+      human.inches = document.getElementById('inches').value,
+      human.weight = document.getElementById('weight').value,
+      human.diet = document.getElementById('diet').value.toLowerCase()
+  }());
+  console.log(human);
+});
 
-
-
-
-
-
-
-
-
-
-
-
-    function displayData (){
-
-     for (let i=0; i < dinos.length; i++) {
-      const grid = document.querySelector("#grid");
-      grid.innerHTML += `
-            <div class="grid-item">
-                <h3>${dinos[i].species}</h3>
-                <img src="./images/${dinos[i].species.toLowerCase()}.png" alt="a draw of a ${dinos[i].species}" />
-                <p>${dinos[i].fact}</p>
-                
-              </div>
-          `;
-     }
-
-     }
-
-
-
-
-
-
-
+*/
 
 
     // Use IIFE to get human data from form
@@ -99,7 +81,21 @@
 
 
     // Generate Tiles for each Dino in Array
-  
+    function displayData (){
+      dinos.splice(4, 0, human);
+      for (let i=0; i < dinos.length; i++) {
+       const grid = document.querySelector("#grid");
+       grid.innerHTML += `
+             <div class="grid-item">
+                 <h3>${dinos[i].species}</h3>
+                 <img src="./images/${dinos[i].species.toLowerCase()}.png" alt="a draw of a ${dinos[i].species}" />
+                 <p>${dinos[i].fact}</p>
+                 
+               </div>
+           `;
+      }
+ 
+      }
         // Add tiles to DOM
 
     // Remove form from screen
